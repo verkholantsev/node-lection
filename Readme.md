@@ -14,7 +14,7 @@ Jekyll Shower works at GitHub Pages. Yes, it's using Jekyll and don't need any e
 2. Make any changes to it (like change your username and all those stuff in the `_config.yml`). You can do it right on the GitHub, btw.
 3. Commit & Push the changes — GitHub would initialise Pages only on the first push after the forking action. That could take up to 10 minutes.
 
-That's all — after doing so you could go at your generated pages — replace there the `username` with your username: `http://username.github.com/jekyller/`, and you'll see Jekyll-generated example of the Shower presentation.
+That's all — after doing so you could go at your generated pages — replace there the `username` with your username: `https://github.yandex-team.ru/pages/<username>/jekyller/`, and you'll see Jekyll-generated example of the Shower presentation.
 
 ### Local usage
 
@@ -142,6 +142,11 @@ You don't need to recreate or think on Shower's HTML structure, you just delimit
 ##### id for the slide
 
 By default the slide would take an `id` from it's content, almost like in GitHub-flavored markdown. But if you want to override it, you could use the syntax [kramdown](http://kramdown.rubyforge.org) (which is used for Jekyller) provides, like this:
+
+### Syntax theme
+
+You could use either twilight prism theme or white "yandex" theme.
+
 
 ``` md
 ## I'm a slide! {#Foo}

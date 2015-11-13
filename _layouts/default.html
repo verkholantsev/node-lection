@@ -3,9 +3,10 @@
 <head>
 	<title>{{ title | strip_html }}</title>
 	<meta charset="utf-8">
-  <meta name="viewport" content="width={% if width %}{{ width }}{% else %}792{% endif %}, user-scalable=no">
-	<link rel="stylesheet" href="themes/{{ theme }}/styles/screen.css">
-	<link rel="stylesheet" href="prism/prism.css">
+  	<meta name="viewport" content="width={% if width %}{{ width }}{% else %}792{% endif %}, user-scalable=no">
+	<link rel="stylesheet" href="themes/{{ theme }}/styles/screen.css" />
+	<!-- <link rel="stylesheet" href="themes/{{ theme }}/styles/prism-white.css" /> -->
+	<link rel="stylesheet" href="bower_components/prismjs/prism-twilight.css" />
 	{% if page.style %}<style>
 {{ page.style }}</style>{%endif%}
 </head>
@@ -19,8 +20,14 @@
 
 	{% if fork_url != '' %}<p class="badge"><a href="{{ fork_url }}">Fork me on Github</a></p>{% endif %}
 	{% if progress %}<div class="progress"><div></div></div>{% endif %}
-	<script src="shower/shower.min.js"></script>
-	<script src="prism/prism.js"></script>
+	<script src="bower_components/shower-core/shower.min.js"></script>
+	<script src="bower_components/prismjs/prism.js"></script>
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+	  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
 	<!-- Copyright © {{ site.time | date: "%Y" }} {{ author_name }}{% if author_url != '' %} — {{ author_url }}{% endif %}{% if company_name != '' %}, {{ company_name }}{% if company_url != '' %} — {{ company_url }}{% endif %}{% endif %} -->
 </body>
 </html>
