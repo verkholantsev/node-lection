@@ -1,6 +1,5 @@
 safe: true
 markdown: kramdown
-pygments: true
 exclude: [ assets ]
 permalink: /:title.html
 
