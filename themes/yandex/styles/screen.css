@@ -42,7 +42,7 @@ body.list
 {
     width: 937px;
     height: 603px;
-    padding: 35px 44px 0 44px;
+    padding: 35px 60px 0;
 }
 
 body.full .slide:after
@@ -436,7 +436,6 @@ body .slide:first-of-type h2
     text-decoration: none;
 
     color: #0174a7;
-    border-bottom: .1em solid;
 }
 
 /* Quote */
@@ -612,7 +611,7 @@ body .slide:first-of-type h2
     overflow: auto;
 
     width: 984px;
-    margin-left: -45px;
+    margin-left: -60px;
     padding: 10px 46px;
 
     border: none;
@@ -652,7 +651,7 @@ body .slide:first-of-type h2
 {
     margin-top: 19px;
 
-    text-indent: -38px;
+    text-indent: -15px;
     letter-spacing: 1px;
 
     font-weight: lighter;
@@ -663,7 +662,7 @@ body .slide:first-of-type h2
 {
     display: inline-block;
 
-    width: 13px;
+    width: 15px;
 
     color: black;
 }
