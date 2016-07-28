@@ -20,261 +20,431 @@ layout: default
 	<p class="author">{{ site.author.name }}, <br/> {{ site.author.position }}</p>
 </div>
 
-## Верхний колонтитул
+## &nbsp;
 {:.section}
 
-### Название раздела
+### Ресурсы компьютера
 
-## Заголовок
+## Ресурсы компьютера
 
-### Вводный текст (первый уровень текста)
+* ...CPU
+* ...Оперативная память
+* ...Диск
+* ...Сеть
 
-*  Второй уровень текста
-	* Третий уровень текста (буллиты)
+## Операции
 
-	1. Четвертый уровень текста
+* ...CPU bound
+    * ...Вычисление числа Фибоначчи
+    * ...Рендеринг изображений
+    * ...Шаблонизация данных
+* ...I/O bound
+    * ...Подсчет количества строк в файле
+    * ...Получение IP-адреса под домену
+    * ...Запрос в базу данных
 
-## Заголовок
+## Веб-приложения
 
-### Вводный текст (первый уровень текста)
-![placeholder](pictures/vertical-placeholder.png){:.right-image}
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       |              |
+|---------------------------|--------------|
 
-*  Второй уровень текста
-	* Третий уровень текста (буллиты)
-	* Третий уровень текста (буллиты)
+## Веб-приложения
 
-	1. Четвертый уровень текста
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      |              |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      |              |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+| Запрос во внешние сервисы |              |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+| Запрос во внешние сервисы | I/O          |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+| Запрос во внешние сервисы | I/O          |
+|---------------------------|--------------|
+| Генерация разметки        |              |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+| Запрос во внешние сервисы | I/O          |
+|---------------------------|--------------|
+| Генерация разметки        | CPU          |
+|---------------------------|--------------|
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+| Запрос во внешние сервисы | I/O          |
+|---------------------------|--------------|
+| Генерация разметки        | CPU          |
+|---------------------------|--------------|
+| Отправка ответа           |              |
++---------------------------|--------------+
+
+## Веб-приложения
+
+| Действие                  | Тип операции |
++---------------------------|--------------+
+| Чтение HTTP-запроса       | I/O          |
+|---------------------------|--------------|
+| Парсинг HTTP-запроса      | CPU          |
+|---------------------------|--------------|
+| Запрос в базу данных      | I/O          |
+|---------------------------|--------------|
+| Запрос во внешние сервисы | I/O          |
+|---------------------------|--------------|
+| Генерация разметки        | CPU          |
+|---------------------------|--------------|
+| Отправка ответа           | I/O          |
++---------------------------|--------------+
+
+## Как быть?
+
+* Многопоточность
+  * ...Переключение контекста не бесплатное
+  * ...При росте количества растут накладные расходы
+  * ...Управление общими ресурсами
+
+## Как быть?
+
+* Очередь событий
+  * ...Приложение запрашивает ресурс в неблокирущем режиме
+  * ...Приложение продолжает работу
+  * ...При готовности ресурса ОС оповестит приложение
 
 ## &nbsp;
-{:.with-big-quote}
-> Цитата
+{:.section}
 
-Текст
-{:.note}
+### Что такое Node.js?
 
-## Пример подсветки кода на JavaScript
+## Платформа для разработки приложений
+
+* libuv
+    * Неблокирующий I/O
+    * Кроссплатформенность
+* Корневая библиотека
+    * Множество модулей для взаимодействия с ОС
+
+## Среда выполнения JavaScript
+
+* Интерпретатор V8
+    * ...Just In Time компиляция в машинный код
+    * ...Оптимизации в рантайме
+    * ...Эффективная сборка мусора
+
+## JavaScript
+
+* Создан в пользовательских интерфейсах
+* Анонимные функции и замыкания
+* Готов к Event Loop
+
+## Блокирующий ввод/вывод
+
+~~~javascript
+var fs = require('fs');
+
+console.log('A');
+
+var content = fs.readFileSync('file.txt');
+
+console.log('B', content);
+~~~
+
+## Неблокирующий ввод/вывод
 
 ~~~ javascript
-!function() {
-    var jar,
-        rstoreNames = /[^\w]/g,
-        storageInfo = window.storageInfo || window.webkitStorageInfo,
-        toString = "".toString;
+var fs = require('fs');
 
-    jar = this.jar = function( name, storage ) {
-        return new jar.fn.init( name, storage );
-    };
+console.log('A');
 
-    jar.storages = [];
-    jar.instances = {};
-    jar.prefixes = {
-        storageInfo: storageInfo
-    };
+fs.readFile('file.txt', function (error, content) {
+    if (error) {
+        return console.error(error);
+    }
 
-    jar.prototype = this.jar.fn = {
-        constructor: jar,
+    console.log('C', content);
+});
 
-        version: 0,
+console.log('B');
+~~~
 
-        storages: [],
-        support: {},
+## &nbsp;
+{:.section}
 
-        types: [ "xml", "html", "javascript", "js", "css", "text", "json" ],
+### Механизмы работы с асинхронными вызовами
 
-        init: function( name, storage ) {
+## Callback
 
-            // Name of a object store must contain only alphabetical symbols or low dash
-            this.name = name ? name.replace( rstoreNames, "_" ) : "jar";
-            this.deferreds = {};
+~~~ javascript
+function callback(error, content) {
+    if (error) {
+        return console.error(error);
+    }
 
-            if ( !storage ) {
-                this.order = jar.order;
+    console.log(content);
+}
+
+var fs = require('fs');
+
+fs.readFile('file.txt', callback);
+~~~
+
+## События
+
+~~~ javascript
+var fs = require('fs');
+var readStream = fs.createReadStream('file.txt');
+
+readStream
+    .on('data', function (chunk) {
+        console.log('Chunk:', chunk);
+    })
+    .on('end', function () {
+        console.log('End');
+    });
+~~~
+
+## Пример с WebSocket
+
+~~~ javascript
+var socket = new WebSocket('ws://host.com');
+
+socket.addEventListener('open', function () {
+    console.log('Opened');
+});
+
+socket.addEventListener('message', function (event) {
+    console.log('Data received:', event.data);
+});
+~~~
+
+## Promise
+
+~~~ javascript
+function getFilePromise(filename) {
+    return new Promise(function (resolve, reject) {
+        fs.readFile(filename, function (error, content) {
+            if (error) {
+                return reject(error);
             }
 
-            // TODO – add support for aliases
-            return this.setup( storage || this.storages );
-        },
+            resolve(content);
+        });
+    });
+}
+~~~
 
-        // Setup for all storages
-        setup: function( storages ) {
-            this.storages = storages = storages.split ? storages.split(" ") : storages;
+## Используем Promise
 
-            var storage,
-                self = this,
-                def = this.register(),
-                rejects = [],
-                defs = [];
+~~~ javascript
+getFilePromise('file.txt')
+    .then(function (content) {
+        console.log('File content:', content);
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
+~~~
 
-            this.stores = jar.instances[ this.name ] || {};
+## Два вызова без Promise
 
-            // Jar store meta-info in lc, if we don't have it – reject call
-            if ( !window.localStorage ) {
-                window.setTimeout(function() {
-                    def.reject();
-                });
-                return this;
-            }
+~~~ javascript
+fs.readFile('file.txt', function (error, content) {
+    if (error) {
+        return console.error(error);
+    }
 
-            // Initiate all storages that we can work with
-            for ( var i = 0, l = storages.length; i < l; i++ ) {
-                storage = storages[ i ];
+    console.log('First file content:', content);
 
-                // This check needed if user explicitly specified storage that
-                // he wants to work with, whereas browser don't implement it
-                if ( jar.isUsed( storage ) ) {
-
-                    // If jar with the same name was created, do not try to re-create store
-                    if ( !this.stores[ storage ] ) {
-
-                        // Initiate storage
-                        defs.push( this[ storage ]( this.name, this ) );
-
-                        // Initiate meta-data for this storage
-                        this.log( storage );
-                    }
-
-                } else {
-                    rejects.push( storage );
-                }
-            }
-
-            if ( !this.order ) {
-                this.order = {};
-
-                for ( i = 0, l = this.types.length; i < l; i++ ) {
-                    this.order[ this.types[ i ] ] = storages;
-                }
-            }
-
-            if ( rejects.length == storages.length ) {
-                window.setTimeout(function() {
-                    def.reject();
-                });
-
-            } else {
-                jar.when.apply( this, defs )
-                    .done(function() {
-                        jar.instances[ this.name ] = this.stores;
-
-                        window.setTimeout(function() {
-                            def.resolve([ self ]);
-                        });
-                    })
-                    .fail(function() {
-                        def.reject();
-                    });
-            }
-            return this;
+    fs.readFile('file1.txt', function (error, content) {
+        if (error) {
+            return console.error(error);
         }
-    };
 
-    jar.fn.init.prototype = jar.fn;
-
-    jar.has = function( base, name ) {
-        return !!jar.fn.meta( name, base.replace( rstoreNames, "_" ) );
-    };
-}.call( window );
+        console.log('Second file content:', content);
+    });
+});
 ~~~
 
-## Пример подсветки кода
-{:.code-with-text}
-
-Вводный текст
+## Два вызова с Promise
 
 ~~~ javascript
-var jar,
-    rstoreNames = /[^\w]/g,
-    storageInfo = window.storageInfo || window.webkitStorageInfo,
-    toString = "".toString;
+getFilePromise('file.txt')
+    .then(function (content) {
+        console.log('First file content:', content);
 
-jar = this.jar = function( name, storage ) {
-    return new jar.fn.init( name, storage );
-};
+        return getFilePromise('file1.txt');
+    })
+    .then(function (content) {
+        console.log('Second file content:', content);
+    })
+    .catch(function (error) {
+        console.error(error);
+    })
+    .then(function () {
+        console.log('End');
+    });
+~~~
+
+## Параллельные вызовы с Promise
+
+~~~ javascript
+var filenames = [
+    'file.txt',
+    'file1.txt',
+    ...,
+    'fileN.txt'
+];
+
+var promises = filenames.map(function (filename) {
+    return getFilePromise(filename);
+});
+
+Promise.all(promises)
+    .then(function (filesContent) {
+        console.log('Files content:', filesContent);
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
 ~~~
 
 ## &nbsp;
-{:.big-code}
+{:.section}
+
+### Buffer
+
+## Buffer
 
 ~~~ javascript
-!function() {
-    var jar,
-        rstoreNames = /[^\w]/g,
-        storageInfo = window.storageInfo || window.webkitStorageInfo,
-        toString = "".toString;
+var buffer = new Buffer(255);
+buffer[0] = 23;
 
-    jar = this.jar = function( name, storage ) {
-        return new jar.fn.init( name, storage );
-    };
-
-    jar.storages = [];
-    jar.instances = {};
-    jar.prefixes = {
-        storageInfo: storageInfo
-    };
-}.call( window );
+fs.readFile('file.txt', function (error, buffer) {
+    Buffer.isBuffer(buffer); // true
+    console.log(buffer); // <Buffer 68 65 6c 6c 6f>
+    buffer.toString('utf-8'); // 'hello'
+    buffer.toString('base64'); // 'aGVsbG8='
+});
 ~~~
 
-## LaTeX
+## &nbsp;
+{:.section}
 
-Библиотека для латекса довольно тяжелая, а нужна она в редких случаях.
-Поэтому она не включена в репу, ее нужно либо установить через bower либо иметь интернет.
+### EventEmitter
 
-When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+## EventEmitter
 
-## Заголовок
-{:.images}
+~~~ javascript
+var EventEmitter = require('events').EventEmitter;
+var emitter = new EventEmitter();
 
-![](pictures/horizontal-placeholder.png)
-*Текст*
+emitter.on('event', function (data) { console.log(data) });
+emitter.once('event', function (data) { console.log('once', data) });
 
-![](pictures/horizontal-placeholder.png)
-*Текст*
+emitter.emit('event', {hello: 'world'});
 
-![](pictures/horizontal-placeholder.png)
-*Текст*
+emitter.removeAllListeners('event');
+~~~
 
-## Заголовок
-{:.images .two}
+## &nbsp;
+{:.section}
 
-![](pictures/horizontal-middle-placeholder.png)
-*Текст*
+### Stream
 
-![](pictures/horizontal-middle-placeholder.png)
-*Текст*
+## &nbsp;
+{:.section}
 
-## Заголовок
-{:.center}
-
-![](pictures/horizontal-big-placeholder.png){:.tmp}
-
-## **![](pictures/cover-placeholder.png)**
-
-## ![](pictures/horizontal-cover-placeholder.png)
-{:.cover}
-
-## Таблица
-
-|  Locavore      | Umami       | Helvetica | Vegan     |
-+----------------|-------------|-----------|-----------+
-| Fingerstache   | Kale        | Chips     | Keytar    |
-| Sriracha       | Gluten-free | Ennui     | Keffiyeh  |
-| Thundercats    | Jean        | Shorts    | Biodiesel |
-| Terry          | Richardson  | Swag      | Blog      |
-+----------------|-------------|-----------|-----------+
-
-
-## Таблица с дополнительным полем
-
-{:.with-additional-line}
-|  Locavore      | Umami       | Helvetica | Vegan     |
-+----------------|-------------|-----------|-----------+
-| Fingerstache   | Kale        | Chips     | Keytar    |
-| Sriracha       | Gluten-free | Ennui     | Keffiyeh  |
-| Thundercats    | Jean        | Shorts    | Biodiesel |
-| Terry          | Richardson  | Swag      | Blog      |
-+----------------|-------------|-----------|-----------+
-| Terry          | Richardson  | Swag      | Blog      |
+### Child process
 
 ## **Контакты** {#contacts}
 
@@ -283,10 +453,10 @@ $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 <p class="position">{{ site.author.position }}</p>
 
     <div class="contacts">
-        <p class="contacts-left contacts-top phone">+7 (000) 000-00-00</p>
-        <p class="contacts-left mail">почта@yandex-team.ru</p>
-        <p class="contacts-right contacts-top twitter">@twitter</p>
+        <!-- <p class="contacts-left contacts-top phone">+7 (000) 000-00-00</p> -->
+        <p class="contacts-left mail">alex-vee@yandex-team.ru</p>
+        <p class="contacts-right contacts-top twitter">@verkholantsev</p>
         <!-- <p class="contacts-right contacts-bottom vk">vk</p> -->
-        <p class="contacts-right facebook">facebook</p>
+        <p class="contacts-right facebook">verkholantsev</p>
     </div>
 </div>

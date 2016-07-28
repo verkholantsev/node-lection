@@ -12,13 +12,13 @@ kramdown:
   enable_coderay: false
 
 presentation:
-    title: Название темы
-    service: Сервис
-    nda: true
+    title: Node.js
+    service: Мобилизация
+    nda: false
 
 author:
-    name: Автор
-    position: Должность
+    name: Верхоланцев Алексей
+    position: Партнерский интерфейс РСЯ
     company:
         name: Яндекс
         url:  http://yandex.ru/
