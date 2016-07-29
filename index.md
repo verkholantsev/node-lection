@@ -226,6 +226,18 @@ layout: default
 
 [https://twitter.com/BusyRich/status/494959181871316992](https://twitter.com/BusyRich/status/494959181871316992)
 
+## Что такое Node.js?
+
+<center><img width="100%" style="-webkit-filter: invert(100%) contrast(170%) hue-rotate(190deg) brightness(155%);" src="./node.jpg"/></center>
+
+Threads? WTF?
+
+## Что такое Node.js?
+
+<center><img width="100%" style="-webkit-filter: invert(100%) contrast(170%) hue-rotate(190deg) brightness(155%);" src="./node.jpg"/></center>
+
+Threads? [http://nikhilm.github.io/uvbook/threads](http://nikhilm.github.io/uvbook/threads)
+
 
 ## Среда выполнения JavaScript
 
