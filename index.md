@@ -193,6 +193,7 @@ layout: default
   * ...Переключение контекста не бесплатное
   * ...При росте количества растут накладные расходы
   * ...Управление общими ресурсами
+  * ...Состояние гонки
 
 ## Как быть?
 
@@ -401,6 +402,75 @@ Promise.all(promises)
 ## &nbsp;
 {:.section}
 
+### CommonJS модули
+
+## CommonJS модули
+
+Экспорт
+
+~~~ javascript
+// square.js
+
+module.exports = function square(x) {
+    return x * x;
+};
+~~~
+
+Импорт
+
+~~~ javascript
+// app.js
+
+var square = require('./square');
+
+console.log(square(2));
+~~~
+
+## CommonJS модули
+
+Экспорт
+
+~~~ javascript
+// math.js
+
+exports.square = function square(x) {
+    return x * x;
+};
+~~~
+
+Импорт
+
+~~~ javascript
+// app.js
+
+var square = require('./math').square;
+
+console.log(square(2));
+~~~
+
+## CommonJS модули
+
+Встроенные
+
+~~~ javascript
+var http = require('http');
+~~~
+
+Установленные
+
+~~~ javascript
+var lodash = require('lodash');
+~~~
+
+Локальные
+
+~~~ javascript
+var math = require('./math');
+~~~
+
+## &nbsp;
+{:.section}
+
 ### Buffer
 
 ## Buffer
@@ -441,10 +511,138 @@ emitter.removeAllListeners('event');
 
 ### Stream
 
+
+## Stream
+
+* ...Абстрактный интерфейс
+* ...Наследник EventEmitter
+* ...Бывают
+  * ...Readable
+  * ...Writable
+  * ...Duplex
+  * ...Transform
+
+## Чтение из файла
+
+~~~ javascript
+try {
+    var content = fs.readFileSync('file.txt');
+    console.log(content);
+} catch (error) {
+    console.error(error);
+}
+~~~
+
+## Чтение из файла
+
+~~~ javascript
+fs.readFile('file.txt', function (error, content) {
+    if (error) {
+        return console.error(error);
+    }
+
+    console.log(content);
+});
+~~~
+
+## Чтение из файла
+
+~~~ javascript
+var stream = fs.createReadStream('file.txt');
+
+stream.on('data', function (chunk) {
+    console.log(chunk);
+});
+
+stream.on('error', function (error) {
+    console.error(error);
+});
+
+stream._read(0xff);
+~~~
+
+## Чтение из файла
+
+~~~javascript
+var stream = fs.createReadStream('file.txt');
+
+stream.pipe(process.stdout);
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+var http = require('http');
+var fs = require('fs');
+
+var server = http.createServer(function (request, response) {
+    fs.readFile('file.txt', function (error, content) {
+        if (error) {
+            return _handleError(response);
+        }
+
+        response.end(content);
+    });
+});
+
+server.listen(4000);
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+var http = require('http');
+var fs = require('fs');
+
+var server = http.createServer(function (request, response) {
+    var stream = fs.createReadStream('file.txt');
+
+    stream.on('error', _handleError(response));
+
+    stream.pipe(response);
+});
+
+server.listen(4000);
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+var http = require('http');
+var fs = require('fs');
+var zlib = require('zlib');
+
+var server = http.createServer(function (request, response) {
+    var stream = fs.createReadStream('file.txt');
+
+    stream.on('error', _handleError(response));
+
+    stream
+        .pipe(zlib.createGzip())
+        .pipe(response);
+});
+
+server.listen(4000);
+~~~
+
 ## &nbsp;
 {:.section}
 
 ### Child process
+
+## Child process
+
+~~~ javascript
+var child = require('child_process');
+
+var ls = child.spawn('ls', ['.']);
+var sort = child.spawn('sort');
+var uniq = child.spawn('uniq');
+
+ls.stdout.pipe(sort.stdin);
+sort.stdout.pipe(uniq.stdin);
+uniq.stdout.pipe(process.stdout);
+~~~
 
 ## **Контакты** {#contacts}
 
