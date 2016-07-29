@@ -187,6 +187,11 @@ layout: default
 | Отправка ответа           | I/O          |
 +---------------------------|--------------+
 
+## &nbsp;
+{:.section}
+
+### Как быть?
+
 ## Как быть?
 
 * Многопоточность
@@ -206,6 +211,12 @@ layout: default
 {:.section}
 
 ### Что такое Node.js?
+
+## Что такое Node.js?
+
+<center><img width="100%" style="-webkit-filter: invert(100%) contrast(170%) hue-rotate(190deg) brightness(155%);" src="./node.jpg"/></center>
+
+[https://twitter.com/BusyRich/status/494959181871316992](https://twitter.com/BusyRich/status/494959181871316992)
 
 ## Платформа для разработки приложений
 
@@ -277,35 +288,6 @@ function callback(error, content) {
 var fs = require('fs');
 
 fs.readFile('file.txt', callback);
-~~~
-
-## События
-
-~~~ javascript
-var fs = require('fs');
-var readStream = fs.createReadStream('file.txt');
-
-readStream
-    .on('data', function (chunk) {
-        console.log('Chunk:', chunk);
-    })
-    .on('end', function () {
-        console.log('End');
-    });
-~~~
-
-## Пример с WebSocket
-
-~~~ javascript
-var socket = new WebSocket('ws://host.com');
-
-socket.addEventListener('open', function () {
-    console.log('Opened');
-});
-
-socket.addEventListener('message', function (event) {
-    console.log('Data received:', event.data);
-});
 ~~~
 
 ## Promise
@@ -404,7 +386,7 @@ Promise.all(promises)
 
 ### CommonJS модули
 
-## CommonJS модули
+## Экспорт и импорт
 
 Экспорт
 
@@ -426,7 +408,7 @@ var square = require('./square');
 console.log(square(2));
 ~~~
 
-## CommonJS модули
+## Экспорт и импорт
 
 Экспорт
 
@@ -448,25 +430,48 @@ var square = require('./math').square;
 console.log(square(2));
 ~~~
 
-## CommonJS модули
+## Как работает require?
 
-Встроенные
+* Встроенные
 
 ~~~ javascript
 var http = require('http');
+
+var net = require('net');
+
+var zlib = require('zlib');
 ~~~
 
-Установленные
+## Как работает require?
+
+* Установленные
 
 ~~~ javascript
 var lodash = require('lodash');
+
+var request = require('request');
 ~~~
 
-Локальные
+~~~
+/home/user/app/node_modules
+/home/user/node_modules
+/home/node_modules
+/node_modules
+~~~
+
+## Как работает require?
+
+* Локальные
 
 ~~~ javascript
-var math = require('./math');
+// ./utils/math.js
+var math = require('./utils/math');
+
+// ./server/index.js
+var server = require('./server');
 ~~~
+
+[https://nodejs.org/api/modules.html#modules_all_together](https://nodejs.org/api/modules.html#modules_all_together)
 
 ## &nbsp;
 {:.section}
@@ -477,15 +482,21 @@ var math = require('./math');
 
 ~~~ javascript
 var buffer = new Buffer(255);
+
 buffer[0] = 23;
 
 fs.readFile('file.txt', function (error, buffer) {
     Buffer.isBuffer(buffer); // true
+
     console.log(buffer); // <Buffer 68 65 6c 6c 6f>
+
     buffer.toString('utf-8'); // 'hello'
+
     buffer.toString('base64'); // 'aGVsbG8='
 });
 ~~~
+
+[https://nodejs.org/api/buffer.html](https://nodejs.org/api/buffer.html)
 
 ## &nbsp;
 {:.section}
@@ -506,21 +517,53 @@ emitter.emit('event', {hello: 'world'});
 emitter.removeAllListeners('event');
 ~~~
 
+[https://nodejs.org/api/events.html#events_class_eventemitter](https://nodejs.org/api/events.html#events_class_eventemitter)
+
 ## &nbsp;
 {:.section}
 
 ### Stream
 
+## Stream
+
+<center><img src="./stream0.svg"/></center>
 
 ## Stream
 
-* ...Абстрактный интерфейс
-* ...Наследник EventEmitter
-* ...Бывают
-  * ...Readable
-  * ...Writable
-  * ...Duplex
-  * ...Transform
+<center><img src="./stream1.svg"/></center>
+
+## Stream
+
+<center><img src="./stream2.svg"/></center>
+
+## Stream
+
+<center><img src="./stream3.svg"/></center>
+
+## Stream
+
+<center><img src="./stream4.svg"/></center>
+
+## Stream
+
+<center><img src="./stream5.svg"/></center>
+
+## Stream
+
+<center><img src="./stream6.svg"/></center>
+
+## Stream
+
+<center><img src="./stream7.svg"/></center>
+
+## Stream
+
+* Readable
+* Writable
+* Duplex
+* Transform
+
+[https://nodejs.org/api/stream.html](https://nodejs.org/api/stream.html)
 
 ## Чтение из файла
 
@@ -625,24 +668,9 @@ var server = http.createServer(function (request, response) {
 server.listen(4000);
 ~~~
 
-## &nbsp;
-{:.section}
+## RTFM
 
-### Child process
-
-## Child process
-
-~~~ javascript
-var child = require('child_process');
-
-var ls = child.spawn('ls', ['.']);
-var sort = child.spawn('sort');
-var uniq = child.spawn('uniq');
-
-ls.stdout.pipe(sort.stdin);
-sort.stdout.pipe(uniq.stdin);
-uniq.stdout.pipe(process.stdout);
-~~~
+[https://nodejs.org/api/](https://nodejs.org/api/)
 
 ## **Контакты** {#contacts}
 
