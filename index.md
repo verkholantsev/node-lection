@@ -212,12 +212,6 @@ layout: default
 
 ### Что такое Node.js?
 
-## Что такое Node.js?
-
-<center><img width="100%" style="-webkit-filter: invert(100%) contrast(170%) hue-rotate(190deg) brightness(155%);" src="./node.jpg"/></center>
-
-[https://twitter.com/BusyRich/status/494959181871316992](https://twitter.com/BusyRich/status/494959181871316992)
-
 ## Платформа для разработки приложений
 
 * libuv
@@ -225,6 +219,13 @@ layout: default
     * Кроссплатформенность
 * Корневая библиотека
     * Множество модулей для взаимодействия с ОС
+
+## Что такое Node.js?
+
+<center><img width="100%" style="-webkit-filter: invert(100%) contrast(170%) hue-rotate(190deg) brightness(155%);" src="./node.jpg"/></center>
+
+[https://twitter.com/BusyRich/status/494959181871316992](https://twitter.com/BusyRich/status/494959181871316992)
+
 
 ## Среда выполнения JavaScript
 
@@ -236,8 +237,8 @@ layout: default
 ## JavaScript
 
 * Создан в пользовательских интерфейсах
-* Анонимные функции и замыкания
 * Готов к Event Loop
+* Функции первого класса и замыкания
 
 ## Блокирующий ввод/вывод
 
@@ -507,10 +508,10 @@ fs.readFile('file.txt', function (error, buffer) {
 
 ~~~ javascript
 var EventEmitter = require('events').EventEmitter;
+
 var emitter = new EventEmitter();
 
 emitter.on('event', function (data) { console.log(data) });
-emitter.once('event', function (data) { console.log('once', data) });
 
 emitter.emit('event', {hello: 'world'});
 
@@ -570,6 +571,7 @@ emitter.removeAllListeners('event');
 ~~~ javascript
 try {
     var content = fs.readFileSync('file.txt');
+
     console.log(content);
 } catch (error) {
     console.error(error);
@@ -610,6 +612,44 @@ stream._read(0xff);
 var stream = fs.createReadStream('file.txt');
 
 stream.pipe(process.stdout);
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+var http = require('http');
+
+
+var server = http.createServer(function (request, response) {
+
+
+
+    // ...
+
+
+
+});
+
+server.listen(4000);
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+var http = require('http');
+var fs = require('fs');
+
+var server = http.createServer(function (request, response) {
+    fs.readFile('file.txt', function (error, content) {
+
+
+        // ...
+
+
+    });
+});
+
+server.listen(4000);
 ~~~
 
 ## Веб-приложение
