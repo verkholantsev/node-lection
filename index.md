@@ -246,6 +246,19 @@ Threads? [http://nikhilm.github.io/uvbook/threads](http://nikhilm.github.io/uvbo
     * ...Оптимизации в рантайме
     * ...Эффективная сборка мусора
 
+## Среда выполнения JavaScript
+
+* Интерпретатор V8
+    * Just In Time компиляция в машинный код
+    * Оптимизации в рантайме
+    * Эффективная сборка мусора
+
+[Optimization killers](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)
+
+[How the V8 engine works](http://thibaultlaurens.github.io/javascript/2013/04/29/how-the-v8-engine-works/)
+
+[V8 Internals](http://docs.huihoo.com/google/io/2009/W_1230_V8BuildingaHighPerformanceJavaScriptEngine.pdf)
+
 ## JavaScript
 
 * Создан в пользовательских интерфейсах
@@ -301,6 +314,70 @@ function callback(error, content) {
 var fs = require('fs');
 
 fs.readFile('file.txt', callback);
+~~~
+
+## Promise
+
+~~~ javascript
+function getFilePromise(filename) {
+
+
+
+
+            // ...
+
+
+
+
+}
+~~~
+
+## Promise
+
+~~~ javascript
+function getFilePromise(filename) {
+    return new Promise(function (resolve, reject) {
+
+
+
+            // ...
+
+
+
+    });
+}
+~~~
+
+## Promise
+
+~~~ javascript
+function getFilePromise(filename) {
+    return new Promise(function (resolve, reject) {
+        fs.readFile(filename, function (error, content) {
+
+
+            // ...
+
+
+        });
+    });
+}
+~~~
+
+## Promise
+
+~~~ javascript
+function getFilePromise(filename) {
+    return new Promise(function (resolve, reject) {
+        fs.readFile(filename, function (error, content) {
+
+
+            // ...
+
+            resolve(content);
+        });
+    });
+}
 ~~~
 
 ## Promise
@@ -581,9 +658,19 @@ emitter.removeAllListeners('event');
 ## Чтение из файла
 
 ~~~ javascript
+
+    var content = fs.readFileSync('file.txt');
+    console.log(content);
+
+
+
+~~~
+
+## Чтение из файла
+
+~~~ javascript
 try {
     var content = fs.readFileSync('file.txt');
-
     console.log(content);
 } catch (error) {
     console.error(error);
