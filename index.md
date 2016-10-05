@@ -819,9 +819,398 @@ var server = http.createServer(function (request, response) {
 server.listen(4000);
 ~~~
 
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+
+
+
+
+
+}
+
+
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+
+
+
+    }
+}
+
+
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+        var str = chunk.toString('utf8');
+
+
+    }
+}
+
+
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+        var str = chunk.toString('utf8');
+        this.push(str.replace(/./g, 'T'))
+
+    }
+}
+
+
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+        var str = chunk.toString('utf8');
+        this.push(str.replace(/./g, 'T'))
+        callback();
+    }
+}
+
+
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+        var str = chunk.toString('utf8');
+        this.push(str.replace(/./g, 'T'))
+        callback();
+    }
+}
+
+var t = new T();
+
+
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ javascript
+var Transform = require('stream').Transform;
+
+class T extends Transform {
+    constructor(options) {
+        super(options);
+    }
+
+    _transform(chunk, encoding, callback) {
+        var str = chunk.toString('utf8');
+        this.push(str.replace(/./g, 'T'))
+        callback();
+    }
+}
+
+var t = new T();
+
+process.stdin.pipe(t).pipe(process.stdout);
+~~~
+
+## Пишем трансформирующий поток
+
+~~~ bash
+$ echo 'Hello, world' | node stream.js
+TTTTTTTTTTTT
+~~~
+
+## &nbsp;
+{:.section}
+
+### Express
+
+## Express
+
+* ...Фреймворк для веб-приложений
+* ...В основе &mdash; паттерн middleware
+
+## Middleware
+
+~~~ javascript
+function middleware(req, res, next) {
+
+    // do something
+
+    next();
+}
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+
+
+
+
+
+
+
+
+
+
+
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+
+
+
+
+
+
+
+
+
+    app.listen(4000, function () {
+        console.log('App is listening on 4000');
+    });
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+
+
+    })
+
+
+
+
+
+    app.listen(4000, function () {
+        console.log('App is listening on 4000');
+    });
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        console.log('Request /', new Date().valueOf());
+
+    })
+
+
+
+
+
+    app.listen(4000, function () {
+        console.log('App is listening on 4000');
+    });
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        console.log('Request /', new Date().valueOf());
+        next();
+    })
+
+
+
+
+
+    app.listen(4000, function () {
+        console.log('App is listening on 4000');
+    });
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        console.log('Request /', new Date().valueOf());
+        next();
+    })
+
+    app.get('/', function (req, res) {
+
+    })
+
+    app.listen(4000, function () {
+        console.log('App is listening on 4000');
+    });
+~~~
+
+## Веб-приложение
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        console.log('Request /', new Date().valueOf());
+        next();
+    })
+
+    app.get('/', function (req, res) {
+        res.send('Hello World!');
+    })
+
+    app.listen(4000, function () {
+        console.log('App is listening on 4000');
+    });
+~~~
+
+## Обработка ошибок
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        next(new Error('Something goes wrong'));
+    })
+
+
+
+
+~~~
+
+## Обработка ошибок
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        next(new Error('Something goes wrong'));
+    })
+
+    app.get(function (error, req, res, next) {
+
+    });
+~~~
+
+## Обработка ошибок
+
+~~~ javascript
+    var express = require('express');
+    var app = express();
+
+    app.get('/', function (req, res, next) {
+        next(new Error('Something goes wrong'));
+    })
+
+    app.get(function (error, req, res, next) {
+        res.status(500).end(error.toString());
+    });
+~~~
+
 ## RTFM
 
-[https://nodejs.org/api/](https://nodejs.org/api/)
+* [https://nodejs.org/api/](https://nodejs.org/api/)
+* [http://expressjs.com/en/4x/api.html](http://expressjs.com/en/4x/api.html)
 
 ## **Контакты** {#contacts}
 

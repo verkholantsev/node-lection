@@ -116,6 +116,8 @@ body .slide:first-of-type h2::first-letter
 
 .slide#cover .s
 {
+    display: none;
+
     position: absolute;
     z-index: 100;
     top: 74px;
