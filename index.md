@@ -575,6 +575,41 @@ var server = require('./server');
 
 [https://nodejs.org/api/modules.html#modules_all_together](https://nodejs.org/api/modules.html#modules_all_together)
 
+## NPM
+
+* Пакетный менеджер
+* Установка пакетов
+* Управление зависимостями
+* Метаданные пакета в `package.json`
+
+## package.json
+
+~~~javascript
+{
+  "name": "homework-3",
+  "version": "1.0.0",
+  "description": "Homework #3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aleksei Verkholantcev <alex-vee@yandex-team.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.14.0"
+  }
+}
+~~~
+
+## Установка пакета
+
+~~~
+$ npm install --save express
+~~~
+
+[https://docs.npmjs.com/getting-started/](https://docs.npmjs.com/getting-started/)
+
+
 ## &nbsp;
 {:.section}
 
@@ -819,6 +854,11 @@ var server = http.createServer(function (request, response) {
 server.listen(4000);
 ~~~
 
+## &nbsp;
+{:.section}
+
+### Пишем трансформирующий поток
+
 ## Пишем трансформирующий поток
 
 ~~~ javascript
@@ -997,10 +1037,61 @@ process.stdin.pipe(t).pipe(process.stdout);
 
 ## Пишем трансформирующий поток
 
-~~~ bash
+~~~
 $ echo 'Hello, world' | node stream.js
 TTTTTTTTTTTT
 ~~~
+
+## &nbsp;
+{:.section}
+
+### HTTP
+
+## HTTP
+
+* Протокол передачи данных
+* Прикладной уровень
+* Клиент-сервер
+
+## Структура HTTP
+
+* В основе &mdash; сообщение
+* Стартовая строка
+* Заголовки
+* Тело сообщения
+
+## Стартовая строка
+
+~~~
+GET /url HTTP/1.1
+~~~
+
+* Метод
+* URI
+* Версия протокола
+
+## Заголовки
+
+~~~
+Host: example.com
+Cookie: cookie
+~~~
+
+* Название
+* Значение
+
+## Методы
+
+| Метод | Безопасный | Идемпотентный |
++-------|------------|---------------+
+| GET   |     +      |       +       |
+|-------|------------|---------------|
+| POST  |            |               |
+|-------|------------|---------------|
+| PUT   |            |       +       |
+|-------|------------|---------------|
+| DELETE|            |       +       |
++-------|------------|---------------|
 
 ## &nbsp;
 {:.section}
@@ -1068,10 +1159,10 @@ function middleware(req, res, next) {
     var express = require('express');
     var app = express();
 
-    app.get('/', function (req, res, next) {
+    app.use(function (req, res, next) {
 
 
-    })
+    });
 
 
 
@@ -1088,10 +1179,10 @@ function middleware(req, res, next) {
     var express = require('express');
     var app = express();
 
-    app.get('/', function (req, res, next) {
-        console.log('Request /', new Date().valueOf());
+    app.use(function (req, res, next) {
+        console.log('Request', req.originalUrl, new Date().valueOf());
 
-    })
+    });
 
 
 
@@ -1108,10 +1199,10 @@ function middleware(req, res, next) {
     var express = require('express');
     var app = express();
 
-    app.get('/', function (req, res, next) {
-        console.log('Request /', new Date().valueOf());
+    app.use(function (req, res, next) {
+        console.log('Request', req.originalUrl, new Date().valueOf());
         next();
-    })
+    });
 
 
 
@@ -1128,14 +1219,14 @@ function middleware(req, res, next) {
     var express = require('express');
     var app = express();
 
-    app.get('/', function (req, res, next) {
-        console.log('Request /', new Date().valueOf());
+    app.use(function (req, res, next) {
+        console.log('Request', req.originalUrl, new Date().valueOf());
         next();
-    })
+    });
 
     app.get('/', function (req, res) {
 
-    })
+    });
 
     app.listen(4000, function () {
         console.log('App is listening on 4000');
@@ -1148,20 +1239,25 @@ function middleware(req, res, next) {
     var express = require('express');
     var app = express();
 
-    app.get('/', function (req, res, next) {
-        console.log('Request /', new Date().valueOf());
+    app.use(function (req, res, next) {
+        console.log('Request', req.originalUrl, new Date().valueOf());
         next();
-    })
+    });
 
     app.get('/', function (req, res) {
         res.send('Hello World!');
-    })
+    });
 
     app.listen(4000, function () {
         console.log('App is listening on 4000');
     });
 ~~~
 
+## &nbsp;
+{:.section}
+
+### Что забыли?
+
 ## Обработка ошибок
 
 ~~~ javascript
@@ -1170,7 +1266,7 @@ function middleware(req, res, next) {
 
     app.get('/', function (req, res, next) {
         next(new Error('Something goes wrong'));
-    })
+    });
 
 
 
@@ -1185,9 +1281,9 @@ function middleware(req, res, next) {
 
     app.get('/', function (req, res, next) {
         next(new Error('Something goes wrong'));
-    })
+    });
 
-    app.get(function (error, req, res, next) {
+    app.use(function (error, req, res, next) {
 
     });
 ~~~
@@ -1200,9 +1296,9 @@ function middleware(req, res, next) {
 
     app.get('/', function (req, res, next) {
         next(new Error('Something goes wrong'));
-    })
+    });
 
-    app.get(function (error, req, res, next) {
+    app.use(function (error, req, res, next) {
         res.status(500).end(error.toString());
     });
 ~~~
